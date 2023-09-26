@@ -33,6 +33,8 @@ function App() {
   return (
     <>
 
+    <h1>JUST CLICK ON START AND SHOW MAGIC!!</h1>
+
      <div className="btns">
       
        <Button color="dark mx-4" onClick={startChangingColor}>Start</Button>
