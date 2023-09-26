@@ -1,24 +1,46 @@
-import logo from './logo.svg';
 import './App.css';
+import { Button } from 'reactstrap';
 
 function App() {
+
+  const randomColor =function(){
+    const hex='0123456789ABCDEF'
+    let color='#'
+
+    for(let i=0;i<6;i++){
+      color+= hex[Math.floor(Math.random() *16)];
+    }
+
+    return color;
+  }
+
+  let intervelId;
+  const startChangingColor =function(){
+
+    if(!intervelId){intervelId=setInterval(changeBodycolor,900);};
+    
+
+    function changeBodycolor(){document.body.style.backgroundColor=randomColor();}
+    
+  }
+
+  const stopChangingColor =function(){
+
+     clearInterval(intervelId);
+     intervelId=null;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+
+     <div className="btns">
+      
+       <Button color="dark mx-4" onClick={startChangingColor}>Start</Button>
+       <Button color="dark" onClick={stopChangingColor}>Stop</Button>
+
     </div>
+
+    </>
   );
 }
 
